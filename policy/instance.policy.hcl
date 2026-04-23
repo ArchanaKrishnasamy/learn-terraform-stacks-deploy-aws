@@ -20,7 +20,7 @@ resource_policy "aws_instance" "vpc_validation" {
   }
 
   enforce {
-    condition     = local.subnet_id == "" || local.vpc_exists
+    condition     = local.subnet_id == ""
     info_message  = "EC2 instance is deployed in a valid VPC with subnet value ${local.subnet_id}"
     error_message = "EC2 instance's subnet does not belong to a defined VPC"
   }
