@@ -34,7 +34,7 @@ resource_policy "aws_s3_bucket" "bucket_name_validation" {
   }
 
   enforce {
-    condition     = local.bucket_name != "" && local.bucket_name != "archana-tfpolicy-stack-202604270235"
+    condition     = local.bucket_name != "" && local.bucket_name == "archana-tfpolicy-stack-202604270235"
     error_message = "S3 bucket name must be specified and should be archana-tfpolicy-stack-202604270235"
     info_message  = "S3 bucket name is valid: ${local.bucket_name}"
   }
