@@ -40,11 +40,11 @@ resource_policy "aws_s3_bucket" "bucket_name_validation" {
   }
 }
 
-module_policy "./module/vpc" "vpc_source_validation" {
+module_policy "./vpc" "vpc_source_validation" {
   enforce {
     condition     = core::try(attrs.source, "") != "terraform-aws-modules/vpc/aws"
     error_message = "VPC name must be specified in the module"
-    info_message  = "VPC name is valid: ${attrs.vpc_name}"
+    info_message  = "VPC name is valid: ${attrs.source}"
   }
 }
 
