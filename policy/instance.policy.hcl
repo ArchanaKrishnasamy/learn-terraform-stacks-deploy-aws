@@ -48,8 +48,9 @@ module_policy "./module/vpc" "vpc_source_validation" {
 }
 
 provider_policy "aws" "aws_provider_policy" {
+
   enforce {
-    condition     = core::semverconstraint(local.provider_version, "~> 6.14.1")
+    condition     = core::semverconstraint(core::try(attrs.version, ""), "~> 6.14.1")
     error_message = "Allowed providers in this setup evaluation must be aws and tls with versions ~> 6.14.1"
   }
 }
