@@ -42,3 +42,13 @@ component "key_pair" {
     tls = provider.tls.this
   }
 }
+
+component "s3" {
+  source   = "./s3"
+  for_each = var.regions
+
+  providers = {
+    aws = provider.aws.this[each.value]
+  }
+}
+  
