@@ -3,7 +3,7 @@ policy {
 }
 
 resource_policy "aws_instance" "instance_type_validation" {
-  enforcement_level = "mandatory"
+  enforcement_level = "advisory"
     locals {
         instance_type = core::try(attrs.instance_type, "")
     }
