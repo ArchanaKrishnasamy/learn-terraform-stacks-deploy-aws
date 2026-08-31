@@ -51,4 +51,13 @@ component "s3" {
     aws = provider.aws.this[each.value]
   }
 }
+
+component "random" {
+  source = "./module_random"
+  for_each = var.regions
+
+  providers = {
+    random = provider.random.this
+  }
   
+}
