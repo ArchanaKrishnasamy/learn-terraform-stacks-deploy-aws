@@ -28,6 +28,8 @@ resource "aws_instance" "private" {
 }
 
 resource "aws_instance" "create_instance" {
+  count = length(var.network.private_subnet_ids) * var.instances_per_subnet
+
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   subnet_id              = var.network.private_subnet_ids[count.index % length(var.network.private_subnet_ids)]
@@ -40,6 +42,8 @@ resource "aws_instance" "create_instance" {
 }
 
 resource "aws_instance" "create_instance_new" {
+  count = length(var.network.private_subnet_ids) * var.instances_per_subnet
+
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   subnet_id              = var.network.private_subnet_ids[count.index % length(var.network.private_subnet_ids)]
@@ -52,6 +56,8 @@ resource "aws_instance" "create_instance_new" {
 }
 
 resource "aws_instance" "update_instance" {
+  count = length(var.network.private_subnet_ids) * var.instances_per_subnet
+  
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   subnet_id              = var.network.private_subnet_ids[count.index % length(var.network.private_subnet_ids)]
