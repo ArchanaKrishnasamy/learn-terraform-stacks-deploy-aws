@@ -52,12 +52,12 @@ component "s3" {
   }
 }
 
-component "random" {
-  source = "./module_random"
-  for_each = var.regions
+# component "random" {
+#   source = "./module_random"
+#   for_each = var.regions
 
-  providers = {
-    random = provider.random.this
-  }
+#   providers = {
+#     random = provider.random.this
+#   }
   
-}
+# }
