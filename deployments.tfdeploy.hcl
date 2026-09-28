@@ -17,7 +17,6 @@ deployment "development" {
       Environment = "dev"
     }
   }
-<<<<<<< Updated upstream
   destroy = false
 }
 
@@ -33,7 +32,3 @@ deployment "development" {
 #   }
 #   destroy = false
 # }
-=======
-  destroy = true
-}
->>>>>>> Stashed changes
