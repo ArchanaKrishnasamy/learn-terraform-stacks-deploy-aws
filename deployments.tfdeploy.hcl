@@ -1,20 +1,23 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-identity_token "aws" {
-  audience = ["aws.workload.identity"]
+store "varset" "aws_credentials" {
+  id     = "varset-2ngLJHwk3Xq54bzZ"
+  category = "env"
 }
 
 deployment "development" {
   inputs = {
     regions        = ["us-east-1"]
-    role_arn       = "arn:aws:iam::907651659844:role/stacks-archana-test-org-test-archana-project"
-    identity_token = identity_token.aws.jwt
+    aws_access_key_id     = store.varset.aws_credentials.AWS_ACCESS_KEY_ID
+    aws_secret_access_key = store.varset.aws_credentials.AWS_SECRET_ACCESS_KEY
+    aws_session_token     = store.varset.aws_credentials.AWS_SESSION_TOKEN
     default_tags = {
       Stack       = "learn-stacks-deploy-aws",
       Environment = "dev"
     }
   }
+<<<<<<< Updated upstream
   destroy = false
 }
 
@@ -30,3 +33,7 @@ deployment "development" {
 #   }
 #   destroy = false
 # }
+=======
+  destroy = true
+}
+>>>>>>> Stashed changes
